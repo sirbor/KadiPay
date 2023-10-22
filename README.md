@@ -8,11 +8,11 @@ KadiPay: Welcome to KadiPay, the innovative web-based decentralized application 
 
 Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-based decentralized application that lets you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the Nigerian Naira conversions.
 
-This is the Backend Repo. You can also have a look at the [frontend](https://github.com/KadiPay/KadiPay-ui-main) and [smartcontract](https://github.com/Sirbor/KadiPay/KadiPay-router-main) repos.
+This is the Backend Repo. You can also have a look at the [frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) and [smartcontract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) repos.
 
-### [Frontend](https://github.com/sirbor/KadiPay/KadiPay-ui-main)
+### [Frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main)
 
-### [Smart Contract](https://github.com/Sirbor/KadiPay/KadiPay-router-main)
+### [Smart Contract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-router-main)
 
 ## Architecture
 ![Frame 6](https://github.com/sirbor/KadiPay/blob/main/kadipay.png)
