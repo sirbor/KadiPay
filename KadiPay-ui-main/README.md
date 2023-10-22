@@ -8,11 +8,11 @@ KadiPay: Welcome to KadiPay, the innovative web-based decentralized application 
 
 Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-based decentralized application that lets you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the Nigerian Naira conversions.
 
-This is the Backend Repo. You can also have a look at the [frontend](https://github.com/KadiPay/KadiPay-ui-main) and [smartcontract](https://github.com/Sirbor/KadiPay/KadiPay-router-main) repos.
+This is the Backend Repo. You can also have a look at the [frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) and [smartcontract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) repos.
 
-### [Frontend](https://github.com/sirbor/KadiPay/KadiPay-ui-main)
+### [Frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main)
 
-### [Smart Contract](https://github.com/Sirbor/KadiPay/KadiPay-router-main)
+### [Smart Contract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-router-main)
 
 ## Architecture
 ![Frame 6](https://github.com/sirbor/KadiPay/blob/main/kadipay.png)
@@ -26,13 +26,13 @@ The backend is built using [Expressjs](https://nodejs.org/en), [Typescript](http
 
 ### Services
 
-There are two services found in the [/services](./src/services/) folder. Bank and blockchain services. 
+There are two services found in the [/services](./KadiPay-backend-main/src/services/) folder. Bank and blockchain services. 
 The blockchain service provides methods for interacting with the blockchain for transaction verification and monitoring (watching transaction confirmations).
 The bank service provides methods for getting account name, exchange balance, fiat to dollar exchange rate, sending naira to the user through the exchange and exchange transaction status.
 
 ### REST API
 
-The REST API is done using Expressjs. It is in the [routes folder](./src/routes)
+The REST API is done using Expressjs. It is in the [routes folder](./KadiPay-backend-main/src/routes/)
 
 | Endpoint         | Parameters                | Description                                                                                                                   |
 |------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -41,7 +41,7 @@ The REST API is done using Expressjs. It is in the [routes folder](./src/routes)
 | GET /liquidity   |             -             | Returns the amount of money available as liquidity on the exchange. The liquidity is VertFinance deposit held on the exchange. |
 
 ### Websocket API
-This API was created with socket.io . It is in the [sockets folder](./src/sockets)
+This API was created with socket.io . It is in the [sockets folder](./KadiPay-backend-main/src/sockets/)
 
 | Endpoint      | Events                                                                                 | Description                                                              |
 |---------------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
@@ -49,7 +49,7 @@ This API was created with socket.io . It is in the [sockets folder](./src/socket
 | /transactions | argValidity, swapValidity, txConfirmations, txConfirmtionsStatus, exchangeStatus, swap | Used to initiate a transaction to send NGN to the user's bank account after the swap transaction is done on the blockchain. It emits events to the frontend to monitor the progress of transactions on the backend. |
 
 ### Models
-The models can be found in the [models](./src//model/) folder. There are two models:
+The models can be found in the [models](./KadiPay-backend-main/src/model/) folder. There are two models:
 
 #### Bank Model
 

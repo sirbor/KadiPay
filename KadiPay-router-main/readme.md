@@ -2,82 +2,42 @@
 KadiPay is your gateway to effortless cryptocurrency-to-fiat conversions, with a primary focus on USD and Kes.
 KadiPay: Welcome to KadiPay, the innovative web-based decentralized application that empowers you to easily convert a wide range ofcryptocurrencies into fiat currencies, with a primary focus on USD and Kes. Seamlessly deposit your converted funds directly into your bank account, all powered by the BNB Smart Chain. Dive into KadiPay's full ecosystem, rich with features and functionalities, by exploring our extensive documentation. Don't forget to check out our frontend, backend, and smart contract repositories for a comprehensive look at how we're simplifying and democratizing cryptocurrency-to-fiat conversions, specifically catering to USD and Kes. Join us on this exciting journey to make crypto-to-fiat transactions more accessible than ever.
 
-# Kadi Finance Backend
+# Kadi Finance Smart Contracts
 
 ## Welcome
+Hi thanks for taking a look at the Kadi Finance Smart Contracts. Kadi Finance is a web-baseed decentralized application that let's you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the USD and KES conversions.
 
-Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-based decentralized application that lets you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the Nigerian Naira conversions.
+This is the Smart Contract Repo. You can also have a look at the [frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) and [backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main) repos.
 
-This is the Backend Repo. You can also have a look at the [frontend](https://github.com/KadiPay/KadiPay-ui-main) and [smartcontract](https://github.com/Sirbor/KadiPay/KadiPay-router-main) repos.
-
-### [Frontend](https://github.com/sirbor/KadiPay/KadiPay-ui-main)
-
-### [Smart Contract](https://github.com/Sirbor/KadiPay/KadiPay-router-main)
+### [Frontend](https://github.com/nonseodion/vert-ui)
+### [Backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main)
 
 ## Architecture
-![Frame 6](https://github.com/sirbor/KadiPay/blob/main/kadipay.png)
 
-From the architecture diagram above, the backend receives the transaction details from the frontend, verifies its authenticity and instructs an exchange to send money to the user's bank account if the transaction is valid. It records the transaction details in a database for historical purposes and future transaction verification.
-Vert Finance already has fiat liquidity on the exchange to enable fiat transactions. This improves the user experience since the user does not have to wait for his crypto to be converted to fiat before he receives it.
+![Frame 5](https://github.com/sirbor/KadiPay/blob/main/kadipay.png)
 
-## Structure
+The architecture above shows how the Vert Router contract sells a users token for stablecoin. Vert Router takes any token from the user and swaps it a stablecoin which it sends to a receiver specified by the user. The Router swaps it to a stablecoin to ensure the amount receive maintains its value. This ensures Vert Finance does not lose money to cryptocurrency price flunctuations. Any address can be a receiver but the frontend passes a fixed receiver. The stablecoin must be sent to this receiver before the fiat equivalent can be sent to a users bank account.
 
-The backend is built using [Expressjs](https://nodejs.org/en), [Typescript](https://www.typescriptlang.org/), and [Viem](https://viem.sh/). Its structure consists of services for interacting with external services, REST APIs for frontend to fetch data, Websockets to improve user experience by providing a bi-directional communciation channel between frontend and backend and models for interacting with databases.
+## Contracts
+There's only one contract.
 
-### Services
+### Vert Router
+The Vert Router contract is a modification of Pancakeswap's Router contract. Its main function is to swap users tokens to a stablecoin and send to a receiver. 
 
-There are two services found in the [/services](./src/services/) folder. Bank and blockchain services. 
-The blockchain service provides methods for interacting with the blockchain for transaction verification and monitoring (watching transaction confirmations).
-The bank service provides methods for getting account name, exchange balance, fiat to dollar exchange rate, sending naira to the user through the exchange and exchange transaction status.
+#### Functions
+| Function                                                                                                                       | Description                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| sellETH( uint amountOutMin, address[] calldata path, uint deadline, address receiver )                                         | Exchanges ETH or the equivalent native currency of the chain it is deployed on to a stablecoin.                                             |
+| sellToken(uint amountIn, uint amountOutMin, address[] calldata path, uint deadline, address receiver )                         | Exchanges any token to a stablecoin.                                                                                                        |
+| sellTokenSupportingFeeOnTransfer( uint amountIn, uint amountOutMin, address[] calldata path, uint deadline, address receiver ) | Exchanges tokens with on transfer fees to a stablecoin.                                                                                     |
+| getAmountIn( uint amountOut, uint reserveIn, uint reserveOut)                                                                  | Returns the token amount to swap to get `amountOut` from a pool.                                                                            |
+| getAmountOut( uint amountIn, uint reserveIn, uint reserveOut)                                                                  | Returns the token amount gotten if `amountIn` is swapped on a pool.                                                                         |
+| getAmountsOut( uint amountIn, address[] memory path )                                                                          | Returns an array of intermediate token amounts when `amountIn` is swapped along `path`. The last element is the token amount gotten.        |
+| getAmountsIn( uint amountOut, address[] memory path )                                                                          | Returns an array of intermediate token amounts needed to get `amountOut` after a swap. The first element is the inital token amount needed. |            |
 
-### REST API
+## Addresses
 
-The REST API is done using Expressjs. It is in the [routes folder](./src/routes)
-
-| Endpoint         | Parameters                | Description                                                                                                                   |
-|------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| GET /list        |             -             | Returns details of all supported banks.                                                                                       |
-| GET /accountname | account_number, bank_code | Returns bank account name. It uses Paystack to resolve the account name.                                                      |
-| GET /liquidity   |             -             | Returns the amount of money available as liquidity on the exchange. The liquidity is VertFinance deposit held on the exchange. |
-
-### Websocket API
-This API was created with socket.io . It is in the [sockets folder](./src/sockets)
-
-| Endpoint      | Events                                                                                 | Description                                                              |
-|---------------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| /rates        |                                          rates                                         | Emits a signed USD/NGN exchange rate at 2-minute intervals.                                           |
-| /transactions | argValidity, swapValidity, txConfirmations, txConfirmtionsStatus, exchangeStatus, swap | Used to initiate a transaction to send NGN to the user's bank account after the swap transaction is done on the blockchain. It emits events to the frontend to monitor the progress of transactions on the backend. |
-
-### Models
-The models can be found in the [models](./src//model/) folder. There are two models:
-
-#### Bank Model
-
-Used to interact with a JSON file that stores details about supported banks. It provides methods to get all banks and their shortcodes.
-
-#### Transaction Model
-
-Used to interact with a MongoDb database that stores details about transactions completed on the backend. The transactions 
-
-## Transaction Flow
-
-1. The swap event on the transactions endpoint of the WebSocket is used to send the blockchain transaction hash, signed rate and bank details to the backend. This initiates the transaction on the backend.
-
-2. The transaction is verified by checking if the blockchain transaction is valid, has already been processed, and if the rate received is valid and within a time limit to prevent an attack that sends an old but valid exchange rate.
-
-3. If the transaction is valid, it is monitored until it gets the required block confirmations. It tries to handle reeorgs (not tested well).
-
-4. After it gets the required block confirmations, the exchange is prompted to send the Naira amount to the user's account.
-
-5. When the transaction completes, it is recorded in the database. 
-
-At each stage of processing the transaction, the transaction Websocket connection informs the frontend. This enables the frontend to deliver an excellent user experience.
-
-
-## How to Setup Locally
-
-1. Clone this github repository with `git clone https://github.com/sirbor/KadiPay/KadiPay-backend-main.git`.
-2. Change the current directory of the terminal to vert-backend directory with `cd KadiPay-backend-main`.
-3. Make sure you have yarn installed and then install all the dependencies with `npm install`.
-4. Create a `.env` file and use the `.env.example` file in this repository to fill the .env file with the environment variables. The `.env.example` has comments to explain each environment variable.
-5. Startup the server with `npm run start`.
+| Chain          | Addresses                                  |
+|----------------|--------------------------------------------|
+| BNB SmartChain | [0x0a055140c146bf8aaca189c65d8572ee18dd7e0](https://bscscan.com/address/0x0a055140c146bf8aaca189c65d8572ee18dd7e01) |
+| BNB Testnet    | [0x74ad3f1C96E23456B8e6c9D7d7F67d1169949b5B](https://bscscan.com/address/0x74ad3f1C96E23456B8e6c9D7d7F67d1169949b5B) |
