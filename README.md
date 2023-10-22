@@ -2,15 +2,12 @@
 KadiPay is your gateway to effortless cryptocurrency-to-fiat conversions, with a primary focus on USD and Kes.
 KadiPay: Welcome to KadiPay, the innovative web-based decentralized application that empowers you to easily convert a wide range ofcryptocurrencies into fiat currencies, with a primary focus on USD and Kes. Seamlessly deposit your converted funds directly into your bank account, all powered by the BNB Smart Chain. Dive into KadiPay's full ecosystem, rich with features and functionalities, by exploring our extensive documentation. Don't forget to check out our frontend, backend, and smart contract repositories for a comprehensive look at how we're simplifying and democratizing cryptocurrency-to-fiat conversions, specifically catering to USD and Kes. Join us on this exciting journey to make crypto-to-fiat transactions more accessible than ever.
 
-# Kadi Finance Backend
 
-## Welcome
-
-Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-based decentralized application that lets you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the Nigerian Naira conversions.
-
-This is the Backend Repo. You can also have a look at the [frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) and [smartcontract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) repos.
+This is the  Repo. You can also have a look at the [frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main), [backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main)  and [smartcontract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main) repos.
 
 ### [Frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main)
+
+### [backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main) 
 
 ### [Smart Contract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-router-main)
 
