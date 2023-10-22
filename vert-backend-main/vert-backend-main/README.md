@@ -6,12 +6,12 @@ Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-
 
 This is the Backend Repo. You can also have a look at the [frontend](https://github.com/nonseodion/vert-ui) and [smartcontract](https://github.com/nonseodion/vert-router) repos.
 
-### [Frontend](https://github.com/nonseodion/vert-ui)
+### [Frontend](https://github.com/sirbor/KadiPay/vert-ui)
 
-### [Smart Contract](https://github.com/nonseodion/vert-router)
+### [Smart Contract](https://github.com/Sirbor/KadiPay/vert-router)
 
 ## Architecture
-![Frame 6](https://github.com/nonseodion/vert-backend/assets/38128301/446654f7-2651-4eec-91fc-8e1371a86e57)
+![Frame 6](https://github.com/sirbor/KadiPay/vert-backend/assets/38128301/446654f7-2651-4eec-91fc-8e1371a86e57)
 
 From the architecture diagram above, the backend receives the transaction details from the frontend, verifies its authenticity and instructs an exchange to send money to the user's bank account if the transaction is valid. It records the transaction details in a database for historical purposes and future transaction verification.
 Vert Finance already has fiat liquidity on the exchange to enable fiat transactions. This improves the user experience since the user does not have to wait for his crypto to be converted to fiat before he receives it.
@@ -72,7 +72,7 @@ At each stage of processing the transaction, the transaction Websocket connectio
 
 ## How to Setup Locally
 
-1. Clone this github repository with `git clone https://github.com/nonseodion/vert-backend.git`.
+1. Clone this github repository with `git clone https://github.com/sirbor/KadiPay//vert-backend.git`.
 2. Change the current directory of the terminal to vert-backend directory with `cd vert-backend`.
 3. Make sure you have yarn installed and then install all the dependencies with `npm install`.
 4. Create a `.env` file and use the `.env.example` file in this repository to fill the .env file with the environment variables. The `.env.example` has comments to explain each environment variable.
