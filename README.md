@@ -7,7 +7,7 @@ This is the  Repo. You can also have a look at the [frontend](https://github.com
 
 ### [Frontend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-ui-main)
 
-### [backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main) 
+### [Backend](https://github.com/sirbor/KadiPay/tree/main/KadiPay-backend-main) 
 
 ### [Smart Contract](https://github.com/sirbor/KadiPay/tree/main/KadiPay-router-main)
 
