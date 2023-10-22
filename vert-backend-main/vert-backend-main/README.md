@@ -11,7 +11,7 @@ This is the Backend Repo. You can also have a look at the [frontend](https://git
 ### [Smart Contract](https://github.com/Sirbor/KadiPay/vert-router)
 
 ## Architecture
-![Frame 6](https://github.com/sirbor/KadiPay/vert-backend/assets/38128301/446654f7-2651-4eec-91fc-8e1371a86e57)
+![Frame 6](https://github.com/sirbor/KadiPay/vert-backend/assets/verti.png)
 
 From the architecture diagram above, the backend receives the transaction details from the frontend, verifies its authenticity and instructs an exchange to send money to the user's bank account if the transaction is valid. It records the transaction details in a database for historical purposes and future transaction verification.
 Vert Finance already has fiat liquidity on the exchange to enable fiat transactions. This improves the user experience since the user does not have to wait for his crypto to be converted to fiat before he receives it.
