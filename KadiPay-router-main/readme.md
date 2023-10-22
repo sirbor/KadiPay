@@ -8,14 +8,14 @@ KadiPay: Welcome to KadiPay, the innovative web-based decentralized application 
 
 Hi, thanks for taking a look at the Vert Finance Backend. Vert Finance is a web-based decentralized application that lets you convert almost any cryptocurrency to fiat in your bank account. It's currently built to support only cryptocurrency to the Nigerian Naira conversions.
 
-This is the Backend Repo. You can also have a look at the [frontend](https://github.com/KadiPay/KadiPay-ui) and [smartcontract](https://github.com/Sirbor/KadiPay/KadiPay-ui) repos.
+This is the Backend Repo. You can also have a look at the [frontend](https://github.com/KadiPay/KadiPay-ui) and [smartcontract](https://github.com/Sirbor/KadiPay/KadiPay-router) repos.
 
 ### [Frontend](https://github.com/sirbor/KadiPay/KadiPay-ui)
 
 ### [Smart Contract](https://github.com/Sirbor/KadiPay/KadiPay-router)
 
 ## Architecture
-![Frame 6](https://github.com/sirbor/KadiPay/KadiPay-backend-main/KadiPay-backend-main/src/assets/verti.png)
+![Frame 6](https://github.com/sirbor/KadiPay/blob/main/kadipay.png)
 
 From the architecture diagram above, the backend receives the transaction details from the frontend, verifies its authenticity and instructs an exchange to send money to the user's bank account if the transaction is valid. It records the transaction details in a database for historical purposes and future transaction verification.
 Vert Finance already has fiat liquidity on the exchange to enable fiat transactions. This improves the user experience since the user does not have to wait for his crypto to be converted to fiat before he receives it.
@@ -76,8 +76,8 @@ At each stage of processing the transaction, the transaction Websocket connectio
 
 ## How to Setup Locally
 
-1. Clone this github repository with `git clone https://github.com/sirbor/KadiPay//KadiPay-backend.git`.
-2. Change the current directory of the terminal to vert-backend directory with `cd KadiPay--backend`.
+1. Clone this github repository with `git clone https://github.com/sirbor/KadiPay/KadiPay-backend.git`.
+2. Change the current directory of the terminal to vert-backend directory with `cd KadiPay-backend`.
 3. Make sure you have yarn installed and then install all the dependencies with `npm install`.
 4. Create a `.env` file and use the `.env.example` file in this repository to fill the .env file with the environment variables. The `.env.example` has comments to explain each environment variable.
 5. Startup the server with `npm run start`.
